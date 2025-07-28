@@ -1,62 +1,35 @@
-# Menu de opções
-menu = """
-[ D ] Depositar
-[ S ] Sacar
-[ E ] Extrato
-[ Q ] Sair
-=> """
+# 💰 Sistema Bancário - Versão Simples
 
-# Variáveis iniciais
-saldo = 0
-limite = 500
-extrato = ""
-numero_saques = 0
-LIMITE_SAQUES = 3
+Este projeto é um **sistema bancário simples** desenvolvido em Python com interface de linha de comando. Ele simula operações bancárias básicas como:
 
-# Loop principal do sistema
-while True:
-    opcao = input(menu).strip().upper()
+- Depósito
+- Saque
+- Extrato
+- Encerramento do sistema
 
-    if opcao == "D":
-        valor = float(input("Informe o valor do depósito: R$ "))
+Foi desenvolvido como parte de um desafio da DIO (Digital Innovation One), e serve para reforçar conceitos como:
 
-        if valor > 0:
-            saldo += valor
-            extrato += f"Depósito: R$ {valor:.2f}\n"
-            print("✅ Depósito realizado com sucesso!")
-        else:
-            print("❌ Operação falhou! O valor precisa ser positivo.")
+- Entrada e saída de dados
+- Estruturas condicionais
+- Laços de repetição
+- Variáveis
+- Formatação de strings
+- Lógica de programação
 
-    elif opcao == "S":
-        valor = float(input("Informe o valor do saque: R$ "))
+## 📌 Funcionalidades
 
-        excedeu_saldo = valor > saldo
-        excedeu_limite = valor > limite
-        excedeu_saques = numero_saques >= LIMITE_SAQUES
+- Depósitos com validação de valor positivo
+- Limite diário de saques (máximo 3)
+- Valor máximo por saque: R$ 500,00
+- Geração de extrato com histórico de operações
+- Mensagens de erro e sucesso amigáveis ao usuário
 
-        if excedeu_saldo:
-            print("❌ Operação falhou! Você não tem saldo suficiente.")
-        elif excedeu_limite:
-            print("❌ Operação falhou! O valor do saque excede o limite de R$500,00.")
-        elif excedeu_saques:
-            print("❌ Operação falhou! Número máximo de saques diários atingido.")
-        elif valor > 0:
-            saldo -= valor
-            extrato += f"Saque:    R$ {valor:.2f}\n"
-            numero_saques += 1
-            print("✅ Saque realizado com sucesso!")
-        else:
-            print("❌ Operação falhou! O valor informado é inválido.")
+## 🚀 Tecnologias
 
-    elif opcao == "E":
-        print("\n📄 EXTRATO")
-        print("Nenhuma movimentação registrada." if not extrato else extrato)
-        print(f"\n💰 Saldo atual: R$ {saldo:.2f}")
-        print("-" * 30)
+- Python 3
 
-    elif opcao == "Q":
-        print("👋 Obrigado por usar nosso sistema. Até mais!")
-        break
+## 🧾 Como executar
 
-    else:
-        print("❌ Operação inválida. Por favor, selecione uma opção válida.")
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/jheysonsilva/sistema-bancario-python.git
